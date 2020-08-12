@@ -29,8 +29,7 @@ def get_download(df, arq):
     
 def main():
     
-    st.sidebar.header("Classificação Mercadológica")
-    st.sidebar.markdown('Desenvolvido por: **Tiago Dias**')
+    st.sidebar.header('Tiago Dias')
     st.sidebar.markdown('Email para contato:')
     st.sidebar.markdown('diasctiago@gmail.com')
     st.sidebar.markdown('LinkedIn:')
@@ -43,7 +42,7 @@ def main():
     st.image('LogoD3.png', format='PNG')
     st.title('Classificação Mercadológica')
     st.subheader('**Classificação com NLP**')
-    st.markdown('Descrever o que o app faz!')
+    st.markdown('Este app faz a classificação mercadológica, a partir da descrição dos itens é feita a classificação por departamento. Com técnicas de **NLP e aprendizagem de máquina**, foi treinado um modelo capaz de categorizar itens em **53 departamentos**. Você pode testar a aplicação fazendo o download de uma relação de itens exemplos no botão (**Link Exemplo**), com o seu próprio arquivo csv (apenas uma coluna com a descrição dos itens), ou escolhendo a opção (**Digitar Itens**) e inserir manualmente os itens separados apenas por vírgula. Você vai poder visualizar exemplos dos dados gerados, alguns gráficos e ao final é possível fazer o download do arquivo classificado.')
     if st.button('Link Exemplo'):
         exemplo = pd.read_csv('https://raw.githubusercontent.com/dadosaocubo/streamlit/master/itens.csv')
         st.markdown(get_download(exemplo, 'itens'), unsafe_allow_html=True)
@@ -55,7 +54,7 @@ def main():
                   '0','a','b','c','d','e','lt','f','g','h','i','j','k','l',
                   'm','n','o','p','q','r','s','t','u','v','x','w','y','z']
     
-    st.subheader('**Selecione uma da Opções**')
+    st.subheader('**Selecione uma das Opções**')
     options = st.radio('O que deseja fazer?',('Carregar Arquivo', 'Digitar Itens'))
     if options == 'Carregar Arquivo':
         data = st.file_uploader('Escolha o dataset (.csv)', type = 'csv')
@@ -96,7 +95,7 @@ def main():
         if st.checkbox('Top10 Departamentos'):
             chart_data = df['departamento'].value_counts().head(10)
             st.bar_chart(chart_data)
-        if st.checkbox('Down10 Departamentos'):
+        if st.checkbox('Bottom10 Departamentos'):
             chart_data = df['departamento'].value_counts().tail(10)
             st.bar_chart(chart_data)
 
