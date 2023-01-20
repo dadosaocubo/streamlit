@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 from joblib import load
 import matplotlib.pyplot as plt
-from wordcloud import WordCloud
+#from wordcloud import WordCloud
 import base64
 
 def clean (df):
@@ -85,13 +85,13 @@ def main():
         if st.checkbox('WordCloud'):
             all_words = ' '.join(s for s in df['nova_descricao'].values)
             # criar uma wordcloud
-            wc = WordCloud(stopwords=stop_words, background_color="black", width=1600, height=800)
-            wordcloud = wc.generate(all_words)
+            #wc = WordCloud(stopwords=stop_words, background_color="black", width=1600, height=800)
+            #wordcloud = wc.generate(all_words)
             # plotar wordcloud
-            fig, ax = plt.subplots(figsize=(10,6))
-            ax.imshow(wordcloud, interpolation='bilinear')
-            ax.set_axis_off()
-            st.pyplot()
+            #fig, ax = plt.subplots(figsize=(10,6))
+            #ax.imshow(wordcloud, interpolation='bilinear')
+            #ax.set_axis_off()
+            #st.pyplot()
         if st.checkbox('Top10 Departamentos'):
             chart_data = df['departamento'].value_counts().head(10)
             st.bar_chart(chart_data)
